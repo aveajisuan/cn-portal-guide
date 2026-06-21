@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>了解 Sofascore 数据维度与体育分析</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f4f0eb;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #2c2c2c;
+            line-height: 1.65;
+            padding: 2rem 1.5rem;
+        }
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            background: #fcfaf7;
+            border-radius: 28px;
+            padding: 2.5rem 2.8rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+        }
+
+        /* 主视觉 */
+        .hero {
+            margin-bottom: 2.8rem;
+            border-bottom: 1px solid #e6ddd4;
+            padding-bottom: 1.8rem;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            color: #2e251f;
+            margin-bottom: 0.6rem;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #7b6e61;
+            font-style: italic;
+            border-left: 3px solid #c7b5a3;
+            padding-left: 1rem;
+            margin-top: 0.2rem;
+        }
+
+        /* 信息卡片网格 */
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2.8rem 0;
+        }
+        .card {
+            background: #f9f6f0;
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem 2rem;
+            flex: 1 1 260px;
+            border: 1px solid #ece3d9;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+        }
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: #3f342b;
+            margin-bottom: 0.6rem;
+            border-bottom: 1px dashed #dacfc2;
+            padding-bottom: 0.4rem;
+        }
+        .card p {
+            color: #3f3a36;
+            font-size: 0.95rem;
+        }
+        .card .tag {
+            display: inline-block;
+            background: #dacfc2;
+            color: #2c241e;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            margin-top: 0.9rem;
+        }
+
+        /* 引用块 / 提示框 */
+        .highlight-box {
+            background: #efe8df;
+            padding: 1.5rem 2rem;
+            border-radius: 24px;
+            margin: 2.4rem 0;
+            border-left: 6px solid #ac9a89;
+            font-style: normal;
+        }
+        .highlight-box p {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box .source {
+            font-size: 0.85rem;
+            color: #6b5d50;
+            margin-top: 0.8rem;
+        }
+
+        /* 文章段落 */
+        .content-block p {
+            margin: 1.2rem 0;
+            font-size: 1.02rem;
+        }
+        .content-block p:first-of-type {
+            margin-top: 0;
+        }
+
+        .inline-link {
+            color: #8a6f58;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #d7c5b4;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .inline-link:hover {
+            color: #543e2c;
+            text-decoration-color: #543e2c;
+        }
+
+        .faq-mini {
+            background: #faf6f0;
+            border-radius: 20px;
+            padding: 1.5rem 1.8rem;
+            margin-top: 2.2rem;
+            border: 1px solid #e6ddd4;
+        }
+        .faq-mini details {
+            margin: 0.7rem 0;
+        }
+        .faq-mini summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #2e251f;
+            font-size: 1rem;
+            padding: 0.3rem 0;
+        }
+        .faq-mini p {
+            margin: 0.5rem 0 0 0.8rem;
+            color: #4e443b;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            .container {
+                padding: 1.8rem 1.2rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .card-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 主视觉 -->
+    <div class="hero">
+        <h1>数据叙事·运动分析</h1>
+        <div class="sub">从实时统计到深度洞察 —— 信息架构的一种面向</div>
+    </div>
+
+    <!-- 自然引入 + 链接段落 -->
+    <div class="content-block">
+        <p>
+            在竞技体育与数据科学的交汇地带，实时统计早已超越简单的数字罗列。无论是足球、篮球还是网球，每一次进攻的转化率、球员跑动热区、对抗成功频次，都构成了动态的战术语言。平台如 
+            <a href="https://cn-portal-sofascore.com" class="inline-link">sofascore</a> 
+            所整合的不仅仅是比分，更是一套可被阅读的竞技行为索引。它把赛场上流动的细节凝固为结构化的指标，让分析师、教练与资深爱好者得以在同一套坐标系下进行讨论。
+        </p>
+    </div>
+
+    <!-- 信息卡片：用途 + 适合人群 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>用途切片</h3>
+            <p>赛后复盘时，逐帧查看球员评分、控球率与预期进球(xG) 的波动曲线；赛前研究对手阵型弱点，通过历史交锋数据对比定位球效率。这些场景都需要一个统一的统计参照系。</p>
+            <span class="tag">场景驱动</span>
+        </div>
+        <div class="card">
+            <h3>适合人群</h3>
+            <p>体育数据编辑、战术分析师、博彩模型研究者、运动科学专业学生，以及任何对比赛深层逻辑有好奇心的资深观众。他们需要的是低噪、可交叉验证的数据上下文。</p>
+            <span class="tag">专业读者</span>
+        </div>
+        <div class="card">
+            <h3>信息密度</h3>
+            <p>区别于传统直播页面的碎片提示，结构化的统计面板提供了更持久的阅读价值。每一次触球、犯规、拦截都被赋予权重，最终汇聚成一支球队的“数字指纹”。</p>
+            <span class="tag">量化视角</span>
+        </div>
+    </div>
+
+    <!-- 引用块 / 提示框  偏知识型承接 -->
+    <div class="highlight-box">
+        <p><strong>▎信息提示</strong> · 当讨论球员表现时，单一评分往往掩盖位置职能的差异。例如一名防守型中场与边锋的预期数据分布截然不同——对比时最好参考同位置中位数与标准差。这是使用任何统计工具时应保持的阅读习惯。</p>
+        <div class="source">—— 引自《体育数据素养札记》</div>
+    </div>
+
+    <!-- 自然段落：继续展开主题 -->
+    <div class="content-block">
+        <p>
+            对于经常需要处理赛程密集、联赛众多的用户而言，一套带有时间轴与事件标签的数据视图能显著降低认知负荷。比如在分析五大联赛某轮冷门时，除了最终比分，更需要观察射门禁区占比、快速反击次数以及门将扑救分布。这些维度在 
+            <a href="https://cn-portal-sofascore.com" class="inline-link">sofascore</a> 
+            的界面中往往以模块化卡片呈现，允许使用者按需组合阅读。数据的呈现方式，决定了洞察的颗粒度。
+        </p>
+        <p>
+            另一个容易被忽略的价值在于“同场不同频”的信息对照。例如在篮球赛事中，同时查看首发与替补阵容的正负值差异，以及各节得分趋势，可以帮助理解轮换策略的实际效果。对于网球，第一发球得分率与破发点转化率则构成了比赛走向的核心叙事锚点。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要 (简约) -->
+    <div class="faq-mini">
+        <h4 style="font-weight:500; margin-bottom:0.6rem; color:#2e251f;">⌂ 常见切入点</h4>
+        <details>
+            <summary>数据延迟对分析有多大影响？</summary>
+            <p>对于非实时投注或即时通讯报道，延迟 10-30 秒通常不影响赛后统计与趋势回顾。但若要追踪秒级事件（如快速反击中的传球序列），则需要对接低延迟数据源。</p>
+        </details>
+        <details>
+            <summary>如何利用统计进行球队风格识别？</summary>
+            <p>长期追踪场均控球率、压迫成功率、传球网络密度等指标，可以量化一支球队是倾向于控球渗透还是防守反击。对比不同赛季的数据漂移，能发现战术迭代的痕迹。</p>
+        </details>
+        <details>
+            <summary>移动端阅读体验如何？</summary>
+            <p>卡片式布局与折叠面板在竖屏手机上保留了主要信息层级，适合快速浏览评分、事件与关键统计。复杂多维度对比建议在宽屏设备上进行。</p>
+        </details>
+    </div>
+
+    <!-- 收尾：自然留白 -->
+    <div style="margin-top: 2.5rem; border-top: 1px solid #e6ddd4; padding-top: 1.2rem; font-size: 0.9rem; color: #7f6f5e;">
+        <p>本文仅从信息架构与数据分析角度展开。数据解读始终依赖于使用者的领域知识与批判性思考。</p>
+    </div>
+
+</div>
+</body>
+</html>

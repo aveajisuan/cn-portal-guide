@@ -1,2 +1,52 @@
 # cn-portal-guide
-HTML page archive and documentation
+
+## 项目简介
+
+本仓库用于归档和发布多个独立的 HTML 页面。这些页面以静态网页形式存在，不针对任何单个域名或具体网站，仅作为通用内容展示与参考使用。
+
+## 目录说明
+
+```
+.
+├── index.html             # 首页入口
+├── pages/                 # 独立 HTML 页面存放目录
+│   ├── page1.html
+│   ├── page2.html
+│   └── ...
+├── assets/                # 资源文件（图片、样式、脚本等）
+│   ├── css/
+│   ├── js/
+│   └── images/
+└── README.md              # 本文件
+```
+
+- `index.html` — 项目的主入口页面，可提供页面导航或简要说明。
+- `pages/` — 存放所有独立 HTML 页面，每个页面可独立访问。
+- `assets/` — 存放公共资源文件，按类型分目录管理。
+
+## 页面归档说明
+
+- 所有页面均为静态 HTML，不依赖外部后端服务。
+- 页面之间相互独立，无跨站跳转或依赖关系。
+- 内容以归档和展示为目的，不涉及任何具体域名或营销推广。
+- 页面命名建议使用英文小写且不含空格，便于直接通过 URL 访问。
+
+## 维护说明
+
+- 欢迎通过 Pull Request 提交新的独立 HTML 页面。
+- 提交前请确保页面内容合规、资源引用正确、无敏感信息。
+- 建议在 `pages/` 下新建以页面功能或主题命名的子目录（例如 `pages/example/`），便于管理。
+- 仓库维护者会定期检查页面可用性及资源完整性。
+
+## 使用方式
+
+1. 克隆本仓库到本地：
+   ```bash
+   git clone https://github.com/your-username/cn-portal-guide.git
+   ```
+2. 直接在浏览器中打开 `index.html` 或 `pages/` 下的任意 HTML 文件即可查看。
+3. 也可通过 GitHub Pages 或其他静态托管服务部署后在线访问。
+
+## 许可证
+
+本项目采用 [MIT License](LICENSE) 开源协议。
